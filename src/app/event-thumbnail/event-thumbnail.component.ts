@@ -9,8 +9,13 @@ export class EventThumbnailComponent {
   @Input() event: any
   @Output() buttonClicked = new EventEmitter();
 
-  handleClickMe() {
+  getStartTimeClass() {
+    if (this.event.time === '8:00 am')
+      return ['green', 'bold'];
+    return '';
+  }
+  /*handleClickMe() {
     console.log('clicked');
     this.buttonClicked.emit('button clicked!');
-  }
+  }*/
 }
