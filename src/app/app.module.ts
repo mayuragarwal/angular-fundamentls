@@ -20,6 +20,7 @@ import { AuthService } from './shared/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
+import { SessionListComponent } from './session-list/session-list.component';
 
 @NgModule({
   imports: [
@@ -38,7 +39,8 @@ import { CreateSessionComponent } from './create-session/create-session.componen
     CreateEventComponent,
     LoginComponent,
     ProfileComponent,
-    CreateSessionComponent
+    CreateSessionComponent,
+    SessionListComponent
   ],
   providers: [EventService, ToastrService, AuthService],
   bootstrap: [EventsAppComponent]
