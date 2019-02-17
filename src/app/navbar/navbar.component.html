@@ -22,22 +22,25 @@
             <a href="">Angular Connect 1</a>
           </li>
           <li>
-              <a href="">Angular Connect 2</a>
-            </li>
+            <a href="">Angular Connect 2</a>
+          </li>
         </ul>
-
       </li>
+      <li class="nav-item" *ngIf="auth.isAuthenticated()">
+          <a class="nav-link" [routerLink]="['/login']">Logout</a>
+        </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="text" placeholder="Search">
       <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="button">Search</button>
     </form>
     <div class="navbar-header navbar-right navbar-brand">
-        <ul class="nav navbar-nav">
-          <li>
-            <a>Welcome John</a>
-          </li>
-        </ul>
-      </div>
+      <ul class="nav navbar-nav">
+        <li>
+          <a *ngIf="!auth.isAuthenticated()" [routerLink]="['/login']">Login</a>
+          <a *ngIf="auth.isAuthenticated()" [routerLink]="['/profile']">Welcome {{auth.currentUser.firstName}}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </nav>
