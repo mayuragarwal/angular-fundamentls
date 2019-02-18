@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 
+.well div {
+  color: #003300;
+}
+
 .hoverwell {
   background-color: #e9edf1;
 }
@@ -8,6 +12,17 @@
     background-color: #c1c6cc;
     cursor: pointer;
   }
+
+  .thumbnail {
+    min-height:250px; 
+     margin: 10px; 
+     padding: 20px;
+    }
+
+    .thumbnail-collapsible { 
+       margin: 10px; 
+       padding: 20px;
+      }
   
   .container {
     padding-top: 10px;

@@ -21,6 +21,8 @@ import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile/profile.component';
 import { CreateSessionComponent } from './create-session/create-session.component';
 import { SessionListComponent } from './session-list/session-list.component';
+import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.component';
+import { DurationPipe } from './shared/duration.pipe';
 
 @NgModule({
   imports: [
@@ -40,7 +42,9 @@ import { SessionListComponent } from './session-list/session-list.component';
     LoginComponent,
     ProfileComponent,
     CreateSessionComponent,
-    SessionListComponent
+    SessionListComponent,
+    CollapsibleWellComponent,
+    DurationPipe
   ],
   providers: [EventService, ToastrService, AuthService],
   bootstrap: [EventsAppComponent]
