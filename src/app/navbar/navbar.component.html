@@ -30,9 +30,9 @@
           <a class="nav-link" [routerLink]="['/login']">Logout</a>
         </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search">
-      <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="button">Search</button>
+    <form class="form-inline my-2 my-lg-0" (ngSubmit)="searchSessions(searchTerm)">
+      <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchTerm" [(ngModel)]="searchTerm">
+      <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
     </form>
     <div class="navbar-header navbar-right navbar-brand">
       <ul class="nav navbar-nav">
