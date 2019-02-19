@@ -11,7 +11,7 @@ import { EventThumbnailComponent } from './event-thumbnail/event-thumbnail.compo
 
 import { EventDetailsComponent } from './event-details/event-details.component';
 import { RouterModule } from '@angular/router';
-import { CreateEventComponent } from './create-event/create-event.component';
+import { SaveEventComponent } from './save-event/save-event.component';
 import { Error404Component } from './errors/404.component';
 
 import { EventService } from './shared/event.service';
@@ -26,6 +26,9 @@ import { CollapsibleWellComponent } from './collapsible-well/collapsible-well.co
 import { DurationPipe } from './shared/duration.pipe';
 import { SimpleModalComponent } from './simple-modal/simple-modal.component';
 import { ModalTriggerDirective } from './shared/modal-trigger.directive';
+import { UpvoteComponent } from './upvote/upvote.component';
+import { LocationValidatorDirective } from './shared/location-validator.directive';
+import { DatePipe } from '@angular/common';
 
 let toastr: Toastr = window['toastr'];
 let jQuery = window['$'];
@@ -44,19 +47,23 @@ let jQuery = window['$'];
     EventThumbnailComponent,
     Error404Component,
     EventDetailsComponent,
-    CreateEventComponent,
+    SaveEventComponent,
     LoginComponent,
     ProfileComponent,
     CreateSessionComponent,
     SessionListComponent,
     CollapsibleWellComponent,
-    DurationPipe,
     SimpleModalComponent,
-    ModalTriggerDirective
+    UpvoteComponent,
+    
+    DurationPipe,
+    ModalTriggerDirective,
+    LocationValidatorDirective
   ],
   providers: [
     EventService, 
     AuthService,
+    DatePipe,
     { provide: TOASTR_TOKEN, useValue: toastr },
     { provide: JQ_TOKEN, useValue: jQuery }
   ],
