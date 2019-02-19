@@ -27,12 +27,12 @@
         </ul>
       </li>
       <li class="nav-item" *ngIf="auth.isAuthenticated()">
-          <a class="nav-link" [routerLink]="['/login']">Logout</a>
-        </li>
+        <a class="nav-link" [routerLink]="['/login']">Logout</a>
+      </li>
     </ul>
     <form class="form-inline my-2 my-lg-0" (ngSubmit)="searchSessions(searchTerm)">
       <input class="form-control mr-sm-2" type="text" placeholder="Search" name="searchTerm" [(ngModel)]="searchTerm">
-      <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit">Search</button>
+      <button class="btn btn-success my-2 my-sm-0 mr-sm-2" type="submit" modal-trigger="searchResults">Search</button>
     </form>
     <div class="navbar-header navbar-right navbar-brand">
       <ul class="nav navbar-nav">
@@ -44,3 +44,16 @@
     </div>
   </div>
 </nav>
+
+<simple-modal title="Matching Sessions" simpleModalId="searchResults" closeOnBodyClick="true">
+  <div class="list-group">
+    <div *ngIf="foundSessions && foundSessions.length > 0">
+      <a class="list-group-item" *ngFor="let session of foundSessions" [routerLink]="['/events', session.eventId]">
+        {{session.name}}
+      </a>
+    </div>
+    <a class="list-group-item" *ngIf="!foundSessions || foundSessions.length <= 0">
+      No maching sessions found.
+    </a>
+  </div>
+</simple-modal>
