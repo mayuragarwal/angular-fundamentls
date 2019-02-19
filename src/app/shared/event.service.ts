@@ -1,13 +1,25 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { IEvent, ISession } from './event.model';
+import { Observable, Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EventService {
+  domain: string = "http://localhost:63566";
 
-  getEvents(): IEvent[] {
-    return this.EVENTS;
+  constructor(private http: HttpClient) { }
+
+  getEvents(): Observable<IEvent[]> {
+    /*let subject = new Subject<IEvent[]>();
+    setTimeout(() => {
+      subject.next(this.EVENTS);
+      subject.complete();
+    }, 100);
+    return subject;
+    */
+    return this.http.get<IEvent[]>(this.domain + '/api/events');
   }
 
   getEvent(id: number): IEvent {
