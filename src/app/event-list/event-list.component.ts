@@ -22,7 +22,15 @@ export class EventListComponent implements OnInit {
 
   ngOnInit() {
     this.eventService.getEvents()
-      .subscribe(events => this.events = events);
+      .subscribe(events => {
+        this.events = events.sort(this.sortByDateAsc)
+      });
+  }
+
+  sortByDateAsc(event1: IEvent, event2: IEvent) {
+    if (event1.date === event2.date) return 0;
+    else if (new Date(event1.date) > new Date(event2.date)) return 1;
+    else return -1;
   }
 
 }

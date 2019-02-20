@@ -15,20 +15,22 @@ export class SaveEventComponent implements OnInit {
   isDirty: boolean = true;
   newEvent: IEvent;
 
-  constructor(private router: Router, private route: ActivatedRoute, 
+  constructor(private router: Router, private route: ActivatedRoute,
     private eventService: EventService, private datePipe: DatePipe) {
-      this.newEvent = {} as any;
-      this.newEvent.location = {} as any;
+    this.newEvent = {} as any;
+    this.newEvent.location = {} as any;
   }
 
   ngOnInit() {
     this.route.params.forEach((params: Params) => {
       if (params && params['id']) {
-        let event = this.eventService.getEvent(+params['id']);
-        if (event == null)
-          this.router.navigate(['404']);
-          this.newEvent = event;
-          this.newEvent.date = this.datePipe.transform(this.newEvent.date, 'MM/dd/yyyy');
+        this.eventService.getEvent(+params['id'])
+          .subscribe(event => {
+            if (event == null)
+              this.router.navigate(['404']);
+            this.newEvent = event;
+            this.newEvent.date = this.datePipe.transform(this.newEvent.date, 'MM/dd/yyyy');
+          });
       }
     });
   }
@@ -39,8 +41,9 @@ export class SaveEventComponent implements OnInit {
 
   saveEvent(formValues: IEvent) {
     formValues.id = this.newEvent.id;
-    this.eventService.saveEvent(formValues);
-    this.router.navigate(['/events']);
+    this.eventService.saveEvent(formValues).subscribe(eventId => {
+      this.router.navigate(['/events']);
+    });
   }
 
 }
