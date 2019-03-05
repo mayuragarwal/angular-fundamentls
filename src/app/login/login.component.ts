@@ -11,6 +11,9 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   mouseOverLogin:boolean;
+  userName: string;
+  password: string;
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
